@@ -1,61 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+![Image of Sprucewire](https://github.com/joshhanley/sprucewire/blob/main/art/Sprucewire-Logo.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Sprucewire Demo
 
-## About Laravel
+This is a demonstration of how you can use [Sprucewire](https://github.com/joshhanley/sprucewire) in a Livewire app.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sprucewire is adapter between Spruce and Livewire, that enables them to be entangled.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+It brings the power of Spruce's global state to Livewire so you can seamlessly share data between Livewire components and keep their state in sync.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Sprucewire Video](https://www.youtube.com/watch?v=Etwv6jW0Z_w)
+- [Sprucewire Repo](https://github.com/joshhanley/sprucewire)
 
-## Learning Laravel
+## The Components
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This demo contains two different Livewire components
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Main
+- Sub Component
 
-## Laravel Sponsors
+The `Main` component is the parent component and it registers the Spruce store using Sprucewire's `registerStore` method. See `resources/views/livewire/main.blade.php`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+The `Sub Component` is the child component and it loads the Spruce store using Sprucewire's `loadStore` method. See `resources/views/livewire/sub-component.blade.php`.
 
-### Premium Partners
+For details on how the register and load store methods work, see ["Setup Stores" in Sprucewire readme](https://github.com/joshhanley/sprucewire#setup-stores).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Instructions
 
-## Contributing
+This demo is live at https://sprucewire.joshhanley.com.au/.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Below are instructions for testing the demo.
 
-## Code of Conduct
+There are two types of properties setup:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Name**
+Uses `wire:model`.
+If you change name in any of the name inputs you will see all 4 are kept in sync.
+And requests are sent from both the parent and child Livewire components.
+- **Sample**
+Uses `wire:model.defer`.
+If you change sample on the Livewire parent component, it will only sync to the Livewire child component on the next request (simulate with "Refresh Server").
+The Livewire child component also have a different property name "Random", showing that Livewire and Spruce property names can be different.
